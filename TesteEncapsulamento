@@ -1,0 +1,26 @@
+public class TesteEncapsulamento {
+    public static void main(String[] args) {
+
+        ContaBancaria conta = new ContaBancaria();
+
+        // 2. TENTAR ACESSAR DIRETAMENTE (vai dar erro se você tentar descomentar)
+        // conta.saldo = 500;  // <-- erro: saldo é privado
+        // conta.titular = "Ana"; // <-- erro
+        // conta.numeroConta = "123"; // <-- erro
+
+        // 3. Inicializar usando SETTERS
+        conta.setNumeroConta("12345-9");
+        conta.setTitular("Giovanna");
+
+        // 4. Testes de depósito e saque
+        conta.depositar(500);     // válido
+        conta.depositar(-20);     // inválido
+
+        conta.sacar(200);         // válido
+        conta.sacar(1000);        // saldo insuficiente
+        conta.sacar(-50);         // inválido
+
+        // 5. Mostrar saldo final
+        System.out.println("\nSaldo final: R$" + conta.getSaldo());
+    }
+}
